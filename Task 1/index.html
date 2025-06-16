@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Progress Bar App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    #addButton {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #progressContainer {
-      margin-top: 20px;
-      max-width: 400px;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 25px;
-      background-color: #eee;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 0;
-      background-color: #aaaf4c;
-      border-radius: 5px 0 0 5px;
-      transition: width 2s linear;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .note-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .add-note {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .add-note:hover {
+            background-color: #45a049;
+        }
+
+        .notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .note {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .note:hover {
+            transform: translateY(-2px);
+        }
+
+        .note p {
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
-  <button id="addButton">Add</button>
-  <div id="progressContainer"></div>
-
-  <script>
-    const addButton = document.getElementById('addButton');
-    const progressContainer = document.getElementById('progressContainer');
-
-    addButton.addEventListener('click', () => {
-      
-      const progressBar = document.createElement('div');
-      progressBar.className = 'progress-bar';
-
-      const progressFill = document.createElement('div');
-      progressFill.className = 'progress-fill';
-
-      progressBar.appendChild(progressFill);
-      progressContainer.appendChild(progressBar);
-
-      
-      setTimeout(() => {
-        progressFill.style.width = '100%';
-      }, 50);
-    });
-  </script>
+    <div class="container">
+        <h1>Note Taking App</h1>
+        <textarea class="note-input" placeholder="Write your note here..."></textarea>
+        <button class="add-note">Add Note</button>
+        <div class="notes-container"></div>
+    </div>
+    <script src="app.js"></script>
 </body>
-</html>
+</html> 
